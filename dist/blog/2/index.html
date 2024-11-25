@@ -1,0 +1,118 @@
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blogs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                lab 1
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/1_lab">Lab1</a></li>
+                <li><a class="dropdown-item" href="/1_labi">instructions</a></li>
+
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/2_lab">Lab 2</a>
+          </li>
+<li class="nav-item">
+              <a class="nav-link" href="/blogsHome">Blogs</a>
+          </li>
+ </li>
+<li class="nav-item">
+              <a class="nav-link" href="/movies">movies</a>
+          </li>
+
+
+          
+
+
+
+          
+
+          </ul>
+      
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+ <main>
+      
+<div class="grid grid-cols-1 gap-4">
+
+<a href= "/blogsHome/" > blogs Home </a>
+    <div class="card bg-primary w-50 ">
+
+      <h2 class="card-title">LAB 1</h2>
+      <!-- Add more post details here -->
+    </div>
+</div>
+<script>
+  console.log(JSON.stringify("LAB 1"));
+
+</script>
+
+
+<h3>Lab 1</h3>
+<h3>My Experience using SSG</h3>
+<p>My first time learning about Static Site Generation was last year during the CSS course. After the first Year at durham college where I learned vanilla js and html I decided to learn react. Where their was alot more freedom of how i wanted to structure the folder and I could make components that I could use almost anywhere in the project. Moving forward to the next year in the css Course I struggled because of how much more rigid using ejs was. In a way using an SSG was harder because React would let me know right away if a variable was spelt wrong or if i was importing an element wrong. An example could be a navigation bar where in react if I were to place a navigation bar into a page it would atomatically import it where this is not the case with an SSG. This sounds like a small incovience but I was able to be “lazy” with React but with SSG’s I was not able to. So in the beginning their was a learning curve but now after using SSG’s for some time now it feals pretty natural</p>
+<h3>Three different template engines</h3>
+<h2>Nunjucks</h2>
+<p>some of the pros of using numjucks are the built in filters esspecially being able to have conditinal fettures where in other language I would need to use js for that logic another filter that would be extremley useful is when working with arrays being able to slice, sort and, join. Template inheritance also looks extremley simple and because of how the rigid the folders are structured it makes it really organized. Some of the negatives are that because it has more feteares it may have a longer learning curve to get all of the value out of using it. Out of all the other options this is the most modular which makes it easier on bigger projects but I on a smaller project with less files other options could make more sence</p>
+<h2>Handle Bars</h2>
+<p>pros of this is being able to use partials for modularity and also the logic of the code is seperate and you would need to add the logic using helpers which is helpful it makes the ocde easier to read but it also this process is more complex then using nunjuck where I could just use a filter. Also another con is that it is harder to use partials in handleabrs needing to register partials where in nunjucks you are able to just add partials to a partials file</p>
+<h2>EJS</h2>
+<p>some of the pros of EJS are that it simple and barebone javascript. The documentation mentions “No religiousness about how to organize things. No reinvention of iteration and control-flow. It’s just plain JavaScript.” This looks good for smaller projects with less files but with bigger projects requiring structure would help keep the project organized</p>
+<h3>lab 1</h3>
+<p>All things considered i will be using Nunjucks for my first assignment mainly because I uisng it so far it feels “natural” to me and it has the best method of including partials and layouts out of the other options</p>
+<h3>SSG</h3>
+<p>An SSG that I have been interensted in before is next.js. An advanage of it is that it is a react framework and I enjoy working with React. Routing in react is my favourite because I could manage part of it using next.js I would be able to restric access to certain parts of the project thier and using next.js I can use this while making a SSG.</p>
+<h2>Configuration</h2>
+<p>the only setting that I would think about changing would be changing the direcory names. Other than that I have   “scripts”: {
+“test”: “echo &quot;Error: no test specified&quot; &amp;&amp; exit 1”,
+“start”: “npx @11ty/eleventy --serve”
+},
+so I am able to refresh the page anytime the file is saved</p>
+<h3>Front Matter</h3>
+<p>Using front matter is where stuff like meta data go such as the title but you are also able to store data that is used on the page here.</p>
+<h3>Resources</h3>
+<p><a href="https://mozilla.github.io/nunjucks/">https://mozilla.github.io/nunjucks/</a></p>
+<p><a href="https://ejs.co/">https://ejs.co/</a></p>
+<p><a href="https://www.npmjs.com/package/handlebars">https://www.npmjs.com/package/handlebars</a></p>
+<p><a href="https://handlebarsjs.com/">https://handlebarsjs.com/</a></p>
+
+
+
+  <a href="/blog/1/">Previous Page</a>
+
+
+  <a href="/blog/3/">Next Page</a>
+
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

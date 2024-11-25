@@ -1,0 +1,53 @@
+---
+title: Movies
+layout: mylayout
+pagination:
+  data: movies
+  size: 6
+  alias: movies
+---
+ 
+<diV class= " m-4 row">
+{% for movie in movies %}
+  <div class="card bg-info m-2 w-25">
+    <h1 class="card-title">{{ movie.title }}</h1>
+    {% for block in movie.overview %}
+      <p>{{ block.children[0].text }}</p>
+        <img class = " h-50 w-50" src="https://cdn.sanity.io/images/vgsscqcj/production/{{movie.poster.asset._ref | filterImage}}" alt="Movie poster" />
+    {% endfor %}
+<button> view </button>
+</div>
+{% endfor %}
+</div>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    {% if pagination.href.previous %}
+      <li class="page-item">
+        <a class="page-link" href="{{ pagination.href.previous }}">Previous</a>
+      </li>
+    {% endif %}
+    
+    {% for pageNumber in pagination.pages %}
+      <li class="page-item {% if page.url == pagination.hrefs[forloop.index0] %}active{% endif %}">
+        <a class="page-link" href="{{ pagination.hrefs[forloop.index0] }}">{{ forloop.index }}</a>
+      </li>
+    {% endfor %}
+    
+    {% if pagination.href.next %}
+      <li class="page-item">
+        <a class="page-link" href="{{ pagination.href.next }}">Next</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+
+<h1>hello</h1>
+<script>
+  console.log(JSON.stringify({{ movies[0].poster | dump | safe }}));
+function handleRatingChange(value){
+
+  console.log(value);
+}
+</script>
+
+

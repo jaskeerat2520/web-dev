@@ -1,0 +1,36 @@
+---
+layout: mylayout
+title: Blogs
+pagination:
+  
+  data: post.result 
+  size: 1 
+  alias: blog
+
+  
+permalink: blog/{{ pagination.pageNumber + 1 }}/index.html
+---
+
+<div class="grid grid-cols-1 gap-4">
+
+<a href= "/blogsHome/" > blogs Home </a>
+    <div class="card bg-primary w-50 ">
+
+      <h2 class="card-title">{{ blog.title }}</h2>
+      <!-- Add more post details here -->
+    </div>
+</div>
+<script>
+  console.log(JSON.stringify({{ blog.title | dump | safe }}));
+
+</script>
+
+
+{{ blog.content  | markdown | safe }}
+
+{% if pagination.href.previous %}
+  <a href="{{pagination.href.previous}}">Previous Page</a>
+{% endif %}
+{% if pagination.href.next %}
+  <a href="{{pagination.href.next}}">Next Page</a>
+{% endif %}

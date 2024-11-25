@@ -1,0 +1,16 @@
+---
+
+data: animals
+---
+
+  <div >
+    {% for item in animals%}
+    <div class = "card">
+        <img class = "card-img-top" src="https://picsum.photos/100/100">
+        <div class = "card-body">
+        
+        <h5 class = "card-title" >{{ item.name}}</h5>
+</div>
+    </div>
+    {% endfor %}
+  </div>
