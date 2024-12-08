@@ -1,0 +1,94 @@
+---
+layout: mylayout
+title: Contact Me
+---
+
+<div class="bg-primary">
+  <h1>Contact me</h1>
+  <div class="container">
+    <form id="contactForm" class="row w-75 bg-success mx-auto border border-yellow" onsubmit="submitMessage(event)">
+      <div class="col-12 mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+      </div>
+      <button class="p-4" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  async function submitMessage(event) {
+    event.preventDefault();
+
+    // Get the form and its data
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+
+    // Extract specific fields (optional if `formData` is sent directly)
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phoneNumber');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    // Debug: Check form fields before sending the request
+    console.log({ name, email, phone, subject, message });
+
+    try {
+      // Send POST request to the API endpoint
+      const response = await fetch(
+        'https://6755ce042f08e7badf720d16--jaskeerat.netlify.app/.netlify/functions/message',
+        {
+          method: 'POST',
+          headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST'
+  },
+          // Convert form data to JSON for better handling on the server-side
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            subject,
+            message,
+          }),
+        }
+      );
+
+      // Check for successful response
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Parse and log the response
+      const result = await response.json();
+      console.log('Response from server:', result);
+
+      // Provide user feedback (optional)
+      alert('Message sent successfully!');
+    } catch (error) {
+      // Handle errors and provide feedback
+      console.error('Error submitting the message:', error);
+      alert('Failed to send the message. Please try again later.');
+    }
+  }
+</script>
+

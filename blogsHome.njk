@@ -2,27 +2,24 @@
 title: Blogs Main Page
 layout: mylayout
 data: posts.result
-
 ---
 
-
-<div class ="w-50 bg-dark m-2" >
-{% for  blog in post.result %}
-<div class = "card -">
-
-
-<h1 class ="card-title" >{{blog.title }} </h1>
-<p> {{ blog.summary }} </p>
-<p> published on {{blog.date}} </p>
-<a href="/blog/{{loop.index}}">Read {{ blog.title}} </a>
-{% endfor %}
-
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      {% for blog in post.result %}
+        <div class="card bg-dark text-white mb-4">
+          <div class="card-body">
+            <h1 class="card-title">{{blog.title}}</h1>
+            <p class="card-text">{{ blog.summary }}</p>
+            <p class="card-text"><small>Published on {{blog.date}}</small></p>
+            <a href="/blog/{{loop.index}}" class="btn btn-light">Read {{ blog.title }}</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
-
-
-</div>
-
-
 <script>
   console.log(JSON.stringify({{ post.result | dump | safe }}));
 

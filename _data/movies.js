@@ -9,6 +9,7 @@ module.exports = async function() {
       rating,
       overview,
       popularity,
+review,
       publishedAt
     }`);
     if (!response.ok) {

@@ -1,5 +1,5 @@
 ---
-title: Movies
+title: action movies 
 layout: mylayout
 pagination:
   data: movies
@@ -10,10 +10,10 @@ pagination:
 
 ---
  
-<diV class= " m-4 row bg-dark justify-center">
-{% for movie in movies %}
-  <div class="card bg-light border border-success m-2 w-25">
-    <h1 class="text-primary">{{ movie.title }}</h1>
+<diV class= " m-4 row">
+{% for movie in movies | filterActionMovies %}
+  <div class="card bg-info m-2 w-25">
+    <h1 class="card-title">{{ movie.title }}</h1>
     {% for block in movie.overview %}
       <p>{{ block.children[0].text }}</p>
         <img class = " h-50 w-50" src="https://cdn.sanity.io/images/vgsscqcj/production/{{movie.poster.asset._ref | filterImage}}" alt="Movie poster" />
@@ -22,7 +22,7 @@ pagination:
     {% endfor %}
     <h1>{{movie.rating }} / 10 </h1>
 
-<a class ="text-dark  btn btn-danger  fw-bold fs-3" href="/moviedetails/{{ movie.title | slug }}">View</a>
+<a href="/moviedetails/{{loop.index}}" > view </a>
 </div>
 {% endfor %}
 </div>
