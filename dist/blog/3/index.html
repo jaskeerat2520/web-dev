@@ -50,31 +50,31 @@
 
           </ul>
       
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </div>
     </nav>
  <main>
       
-<div class="grid grid-cols-1 gap-4">
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/blogsHome/">Blogs Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">LAB 2</li>
+        </ol>
+      </nav>
 
-<a href= "/blogsHome/" > blogs Home </a>
-    <div class="card bg-primary w-50 ">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h1 class="card-title">LAB 2</h1>
+          <p class="card-text text-muted">Published on: 2024-11-15</p>
+        </div>
+      </div>
 
-      <h2 class="card-title">LAB 2</h2>
-      <!-- Add more post details here -->
-    </div>
-</div>
-<script>
-  console.log(JSON.stringify("LAB 2"));
-
-</script>
-
-
-<h3>5 different CMS services</h3>
+      <article class="mb-4">
+        <h3>5 different CMS services</h3>
 <ol>
 <li>Strapi.</li>
 </ol>
@@ -101,11 +101,30 @@ But For the next assignment I am going to be using Sanity as my healess CMS prov
 <p>Some of the different Challenges were simpally setting up all of the files</p>
 <p><img src="sanitylab2.jpg" alt="My Local Image"></p>
 
+      </article>
 
+      <nav aria-label="Blog navigation">
+        <ul class="pagination justify-content-between">
+          
+            <li class="page-item">
+              <a class="page-link" href="/blog/2/">&larr; Previous Post</a>
+            </li>
+          
 
-  <a href="/blog/2/">Previous Page</a>
+          
+            <li class="page-item disabled">
+              <span class="page-link">Next Post &rarr;</span>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
-
+<script>
+  console.log(JSON.stringify("LAB 2"));
+</script>
 
     </main>
 

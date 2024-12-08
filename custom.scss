@@ -1,0 +1,29 @@
+// custom.scss
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+// Simplified Gruvbox colors
+// Nord colors mapped to your variables
+$gruvbox-dark: #2E3440;     // Background
+$gruvbox-light: #D8DEE9;    // Text/Foreground
+$gruvbox-red: #BF616A;      // Error/Danger
+$gruvbox-green: #A3BE8C;    // Success
+$gruvbox-yellow: #EBCB8B;   // Warning
+$gruvbox-blue: #5E81AC;     // Primary
+$gruvbox-purple: #B48EAD;   // Accent
+$gruvbox-aqua: #88C0D0;     // Secondary
+
+// Override Bootstrap variables with Nord colors
+$primary: $gruvbox-blue;
+$secondary: $gruvbox-aqua;
+$success: $gruvbox-green;
+$warning: $gruvbox-yellow;
+$danger: $gruvbox-red;
+$light: $gruvbox-light;
+$dark: $gruvbox-dark;
+
+$body-bg: $gruvbox-dark;// Import Bootstrap
+@import "bootstrap";
+
+@import "node_modules/bootstrap/scss/bootstrap";

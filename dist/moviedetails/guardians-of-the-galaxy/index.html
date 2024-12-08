@@ -1,0 +1,165 @@
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>movies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                lab 1
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/1_lab">Lab1</a></li>
+                <li><a class="dropdown-item" href="/1_labi">instructions</a></li>
+
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/2_lab">Lab 2</a>
+          </li>
+<li class="nav-item">
+              <a class="nav-link" href="/blogsHome">Blogs</a>
+          </li>
+ </li>
+<li class="nav-item">
+              <a class="nav-link" href="/movies">movies</a>
+          </li>
+
+
+          
+
+
+
+          
+
+          </ul>
+      
+          </form>
+        </div>
+      </div>
+    </nav>
+ <main>
+      
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card bg-light m-4">
+        <div class="card-body text-center">
+          <h1 class="card-title">Guardians of the Galaxy</h1>
+          
+          
+            <p>Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.</p>
+          
+          
+          <img class="img-fluid w-50 mx-auto d-block" src="https://cdn.sanity.io/images/vgsscqcj/production/236a8e4d456db62a04f85c39abcfd74c50e0c37b-780x1170.jpg" alt="Movie poster" />
+          
+          <h2 class="mt-3">7 / 10 </h2>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h2>Reviews:</h2>
+        
+      </div>
+
+      <button class="btn btn-primary mb-3" onClick="showForm()">Add a review</button>
+
+      <form style="display: none;" id="review-form" class="mb-4">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+        </div>
+
+        <div class="mb-3">
+          <label for="review" class="form-label">Review</label>
+          <textarea class="form-control" id="review" name="review" rows="4"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rating</label>
+          <input type="number" class="form-control" id="rating" name="rating" placeholder="0-10" min="0" max="10">
+        </div>
+
+        <button type="button" class="btn btn-success" onClick="handleReviewSubmission()">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  console.log(JSON.stringify({"popularity":19.020593,"review":[{"_key":"b6e5cff06310","date":"2024-11-28","reviewContent":"goodd","_type":"review","rating":8.4,"Title":"Movie"}],"publishedAt":null,"title":"WALL·E","slug":{"current":"walle","_type":"slug","source":"title"},"poster":{"hotspot":{"y":0.6141121495327106,"height":0.08710280373831777,"width":0.2149532710280373,"x":0.4750778816199377},"_type":"image","asset":{"_ref":"image-69ad5d60ff19c456954513e8c67e9563c780d5e1-780x1170-jpg","_type":"reference"},"crop":{"top":0.3859065420560748,"left":0,"bottom":0,"right":0}},"rating":null,"overview":[{"markDefs":[],"children":[{"_type":"span","marks":[],"text":"WALL·E is the last robot left on an Earth that has been overrun with garbage and all humans have fled to outer space. For 700 years he has continued to try and clean up the mess, but has developed some rather interesting human-like qualities. When a ship arrives with a sleek new type of robot, WALL·E thinks he's finally found a friend and stows away on the ship when it leaves.","_key":"v6xmjPqs"}],"_type":"block","style":"normal","_key":"8a1fd7b434db11443bf33bc3a2428b64"}]}));
+function handleRatingChange(value){
+
+  console.log(value);
+}
+function showForm(){
+
+  document.getElementById('review-form').style.display = 'block'; // Makes it visible
+  console.log("yes")
+
+}
+function handleReviewSubmission() {
+  const form = document.getElementById('review-form');
+  const formData = new FormData(form);
+  const title = formData.get('title');
+  const review = formData.get('review');
+  const rating = formData.get('rating');
+
+  submitReview(title, review, rating)
+    .then(data => {
+      console.log('Review submitted:', data);
+      form.reset();
+      form.style.display = 'none';
+    })
+    .catch(error => {
+      console.error('Error submitting review:', error);
+    });
+
+
+
+}
+
+async function submitReview(title, review, rating) {
+  try {
+    const response = await fetch('https://lighthearted-gecko-702685.netlify.app/.netlify/functions/review', {
+     mode: 'no-cors',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title, review, rating })
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+</script>
+
+
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                lab 1
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/1_lab">Lab1</a></li>
+                <li><a class="dropdown-item" href="/1_labi">instructions</a></li>
+
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/2_lab">Lab 2</a>
+          </li>
+<li class="nav-item">
+              <a class="nav-link" href="/blogsHome">Blogs</a>
+          </li>
+ </li>
+<li class="nav-item">
+              <a class="nav-link" href="/movies">movies</a>
+          </li>
+
+
+          
+
+
+
+          
+
+          </ul>
+      
+          </form>
+        </div>
+      </div>
+    </nav>
+ <main>
+      
+<div class="bg-primary">
+  <h1>Contact me</h1>
+  <div class="container">
+    <form id="contactForm" class="row w-75 bg-success mx-auto border border-yellow" onsubmit="submitMessage(event)">
+      <div class="col-12 mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+      </div>
+      <button class="p-4" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  async function submitMessage(event) {
+    event.preventDefault();
+
+    // Get the form and its data
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+
+    // Extract specific fields (optional if `formData` is sent directly)
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phoneNumber');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    // Debug: Check form fields before sending the request
+    console.log({ name, email, phone, subject, message });
+
+    try {
+      // Send POST request to the API endpoint
+      const response = await fetch(
+        'https://lab3final-o0z52vh8e-jaskeerat2520s-projects.vercel.app/api/email',
+        {
+          method: 'POST',
+          headers: {
+'Access-Control-Allow-Origin': '*',
+          },
+          // Convert form data to JSON for better handling on the server-side
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            subject,
+            message,
+          }),
+        }
+      );
+
+      // Check for successful response
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Parse and log the response
+      const result = await response.json();
+      console.log('Response from server:', result);
+
+      // Provide user feedback (optional)
+      alert('Message sent successfully!');
+    } catch (error) {
+      // Handle errors and provide feedback
+      console.error('Error submitting the message:', error);
+      alert('Failed to send the message. Please try again later.');
+    }
+  }
+</script>
+
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

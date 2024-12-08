@@ -23,6 +23,11 @@ eleventyConfig.addFilter("filterImage", function(value) {
   }
   return '';
 });
+
+
+eleventyConfig.addFilter("filterActionMovies", function(movies) {
+console.log(movies)
+ }) 
   return {
     dir: {
       output: "dist"
